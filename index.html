@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACI — Artfully Crafted Intelligence · the family namespace</title>
+<meta name="description" content="ACI · Artfully Crafted Intelligence — a family namespace for human-AI collaboration protocols, languages, runtimes, and specifications. The [ROLE]+ACI pattern (HACI human · MACI machine · DACI distributed) over a shared ACI Core. A defensive publication by David Lee Wise / Bridge-Burners LLC, ROOT0.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600&family=Spectral:ital,wght@0,300;0,400;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--sea:#0e0a1c;--sea2:#160f2a;--line:rgba(150,150,200,.16);--lead:#9a98b6;--lead-dim:#5b5878;
+    --parch:#e7e3f0;--parch-dim:#b6b2cc;--gold:#d9a441;--gold-dim:#a87f33;--verd:#73b3a3;--murex:#b24a78;
+    --aci:#7e86e6;--aci-dim:#4a4e8a;--star:#e9e6f6;}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;background:var(--sea);color:var(--parch);font-family:"Spectral",Georgia,serif;line-height:1.58;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(1100px 620px at 80% -12%,rgba(126,134,230,.14),transparent 60%),
+      radial-gradient(820px 640px at 4% 112%,rgba(115,179,163,.06),transparent 55%);
+    display:flex;justify-content:center}
+  .card{max-width:680px;width:100%;padding:34px 24px 56px}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-dim)}
+  .hero{display:flex;gap:18px;align-items:center;margin-top:8px}
+  .hero svg{flex:0 0 86px}
+  h1{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:clamp(38px,9vw,60px);margin:0;line-height:.95;letter-spacing:-.5px}
+  h1 .gk{display:block;font-size:.3em;color:var(--lead);letter-spacing:.06em;margin-top:7px;font-style:italic}
+  .sub{font-style:italic;font-weight:300;color:var(--parch-dim);font-size:16px;margin:16px 0 0;max-width:60ch}
+  .sub b{color:var(--aci);font-style:normal;font-weight:400}
+  h2{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dim);
+    margin:32px 0 13px;font-weight:500;border-top:1px solid var(--line);padding-top:18px}
+  p.body{font-size:15.5px;color:var(--parch-dim);max-width:64ch} p.body b{color:var(--parch)}
+
+  .pattern{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;
+    background:rgba(126,134,230,.05);border:1px solid rgba(126,134,230,.2);border-radius:8px;padding:16px;margin-top:6px}
+  .pattern .role{cursor:pointer;border:1px solid var(--line);border-radius:6px;padding:9px 13px;color:var(--parch);
+    font-size:13px;letter-spacing:.04em;transition:.14s;text-align:center;min-width:64px}
+  .pattern .role:hover{border-color:rgba(126,134,230,.5)} .pattern .role.sel{border-color:var(--aci);background:rgba(126,134,230,.1);color:var(--aci)}
+  .pattern .role b{font-family:"Cormorant Garamond",serif;font-size:18px;display:block} .pattern .role small{font-size:9px;color:var(--lead-dim)}
+  .pattern .plus{color:var(--lead-dim);font-size:18px} .pattern .root{color:var(--aci);font-size:15px;letter-spacing:.1em}
+  .detail{margin-top:12px;background:rgba(0,0,0,.2);border:1px solid var(--line);border-radius:7px;padding:14px 16px;min-height:74px}
+  .detail .nm{font-family:"Cormorant Garamond",serif;font-size:22px;color:var(--aci)}
+  .detail .st{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:20px;margin-left:8px}
+  .detail .st.spec{color:#0e0a1c;background:var(--verd)} .detail .st.res{color:var(--parch-dim);border:1px solid var(--line)}
+  .detail p{margin:6px 0 0;font-size:14px;color:var(--parch-dim)}
+
+  pre.tree{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--parch-dim);line-height:1.6;background:rgba(0,0,0,.22);
+    border:1px solid var(--line);border-radius:7px;padding:16px;overflow-x:auto;margin-top:4px}
+  pre.tree b{color:var(--aci)} pre.tree .spec{color:var(--verd)} pre.tree .res{color:var(--gold-dim)}
+
+  table{width:100%;border-collapse:collapse;margin-top:6px;font-size:13px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dim)}
+  td{color:var(--parch-dim)} td.x{color:var(--aci)} td b{color:var(--parch)}
+
+  ol.scope{font-size:13.5px;color:var(--parch-dim);padding-left:20px} ol.scope li{margin:6px 0} ol.scope b{color:var(--parch)}
+
+  .note{margin-top:26px;border-top:1px solid var(--line);padding-top:15px;font-family:"IBM Plex Mono",monospace;
+    font-size:11px;line-height:1.85;color:var(--lead-dim)}
+  .note b{color:var(--gold-dim);font-weight:500}
+  .foot{display:flex;justify-content:space-between;margin-top:22px;font-family:"IBM Plex Mono",monospace;
+    font-size:10.5px;color:var(--lead-dim);letter-spacing:.05em;flex-wrap:wrap;gap:6px}
+  .foot a{color:var(--aci);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="eyebrow">defensive publication · namespace root: ACI</div>
+  <div class="hero">
+    <svg viewBox="0 0 120 120" aria-hidden="true">
+      <defs><radialGradient id="g" cx="0.5" cy="0.4" r="0.6"><stop offset="0" stop-color="#7e86e6" stop-opacity="0.4"/><stop offset="1" stop-color="#7e86e6" stop-opacity="0"/></radialGradient></defs>
+      <circle cx="60" cy="60" r="56" fill="url(#g)"/>
+      <!-- hooded figure (the star-cloaked artisan) -->
+      <path d="M58 18 C40 20 30 40 34 62 C30 70 30 86 40 96 C50 104 74 104 84 96 C80 80 78 70 82 60 C90 46 84 22 58 18 Z" fill="#0c0a1a" stroke="#7e86e6" stroke-width="1.4"/>
+      <path d="M58 18 C46 22 40 38 42 56 C40 64 41 78 47 90" fill="none" stroke="#9a98b6" stroke-width="0.9" opacity="0.5"/>
+      <!-- face hint -->
+      <path d="M72 50 q7 6 2 16 q-3 5 -8 4" fill="none" stroke="#e7e3f0" stroke-width="1" opacity="0.8"/>
+      <!-- stars on the cloak -->
+      <g fill="#e9e6f6"><circle cx="50" cy="40" r="1"/><circle cx="62" cy="34" r="0.8"/><circle cx="46" cy="58" r="0.9"/><circle cx="58" cy="64" r="0.7"/><circle cx="52" cy="78" r="0.8"/><circle cx="68" cy="74" r="0.7"/><circle cx="44" cy="72" r="0.6"/></g>
+      <!-- the crafting dagger -->
+      <g stroke="#cfc8e0" stroke-width="1.2" fill="none"><line x1="92" y1="58" x2="100" y2="84"/><path d="M89 56 l6 -2"/></g>
+    </svg>
+    <div><h1>Artfully Crafted<br>Intelligence<span class="gk">ACI · a family namespace · not artificial — crafted</span></h1></div>
+  </div>
+  <p class="sub">A coherent family of <b>human-AI collaboration protocols, languages, runtimes, and specifications</b>, organised under one namespace. Each member is named <b>[role letter] + ACI</b> — H for human, M for machine, D for distributed — and inherits a shared <b>ACI Core</b>. "Artfully" is chosen with intent: these systems are not merely functional but built with craft, by hand and by design. A design philosophy, not just a category.</p>
+
+  <h2>① the expansion</h2>
+  <p class="body" style="margin-top:0">The acronym <b>ACI</b> is established with the specific expansion <span style="color:var(--aci)">Artfully Crafted Intelligence</span> — deliberately distinct from prior uses (<i>Artificial Creative Intelligence</i>, <i>Artificial Capable Intelligence</i>, <i>Artificial Coherence Intelligence</i>). No prior public use of the phrase "Artfully Crafted Intelligence" as an ACI expansion was found as of disclosure. <b>Crafted</b> emphasises construction by hand and intent — distinguishing it from emergent or accidental intelligence.</p>
+
+  <h2>② the pattern — [role] + ACI</h2>
+  <div class="pattern">
+    <div class="role sel" data-k="HACI"><b>H</b><small>human</small></div>
+    <div class="role" data-k="MACI"><b>M</b><small>machine</small></div>
+    <div class="role" data-k="DACI"><b>D</b><small>distributed</small></div>
+    <div class="role" data-k="ACI"><b>·</b><small>core</small></div>
+    <span class="plus">+</span><span class="root">ACI</span>
+  </div>
+  <div class="detail" id="detail"></div>
+
+  <h2>③ the architecture</h2>
+<pre class="tree">  <b>ACI — Artfully Crafted Intelligence</b>
+  │
+  ├─ <b>ACI Core</b>   shared principles · data models · interface contracts
+  │     deterministic communication · explicit attribution ·
+  │     intent↔evidence separation · minimal syntax · external anchoring
+  │
+  ├─ <b>HACI</b> (Human ACI)        semantic Markdown for human-AI authoring
+  │     .haci  ·  <span class="spec">SPECIFIED (v0.1)</span>
+  │
+  ├─ <b>MACI</b> (Machine ACI)      machine-to-machine collaboration
+  │     .maci  ·  <span class="res">RESERVED</span>
+  │
+  ├─ <b>DACI</b> (Distributed ACI)  multi-agent coordination &amp; consensus
+  │     .daci  ·  <span class="res">RESERVED</span>
+  │
+  └─ [future members]   pattern: [role letter] + ACI · extensible by accretion</pre>
+  <p class="body">Five Core principles inherited by every member: (1) deterministic communication between human and machine; (2) explicit attribution of authorship and authority; (3) separation of intent from evidence; (4) minimal syntax, maximal compatibility; (5) external anchoring for trust and provenance. Members depend only on Core, never on each other; each is versioned independently. <b>The namespace grows by accretion, not revision.</b></p>
+
+  <h2>④ differentiation from prior ACI uses</h2>
+  <table>
+    <tr><th>expansion</th><th>source</th><th>overlap</th></tr>
+    <tr><td>Artificial Creative Intelligence</td><td>Univ. of Colorado</td><td>none — different expansion &amp; domain</td></tr>
+    <tr><td>Artificial Capable Intelligence</td><td>TechRepublic</td><td>none — different expansion &amp; scope</td></tr>
+    <tr><td>Artificial Coherence Intelligence</td><td>SSRN</td><td>none — different expansion &amp; focus</td></tr>
+    <tr><td><b>Artfully Crafted Intelligence</b></td><td>this disclosure</td><td class="x">the novel contribution</td></tr>
+  </table>
+
+  <h2>⑤ scope of the disclosure</h2>
+  <p class="body" style="margin-top:0">Published to establish prior art and prevent patenting by any party, covering:</p>
+  <ol class="scope">
+    <li>the expansion <b>"Artfully Crafted Intelligence"</b> as a family namespace for human-AI collaboration protocols, languages, runtimes &amp; specs;</li>
+    <li>the naming convention <b>[role letter] + ACI</b> — HACI, MACI, DACI as family members;</li>
+    <li>the <b>shared-core</b> architecture (ACI Core) inherited by independently-versioned members;</li>
+    <li>the <b>accretion</b> extensibility model (add a role-letter + spec, never modify the root);</li>
+    <li>the file extensions <b>.haci / .maci / .daci</b>;</li>
+    <li>the tooling namespace — HACI Script · Parser · Linter · Language Server · ACI Registry.</li>
+  </ol>
+
+  <div class="note">
+    <b>what this is.</b> a defensive publication under the Technical Disclosure Commons — published to establish priority and prior art; <b>not a patent application</b>. The author retains all rights. The first concrete member, <b>HACI</b>, is specified in a companion filing (the .haci format, the three-symbol grammar, the case convention, the reference parser haci.py). This page renders the family-namespace charter faithfully from that disclosure.
+    <br><b>the figure.</b> the star-cloaked artisan with the blade is the namespace's emblem — intelligence not poured but <i>crafted</i>: cut, sewn, and set by hand.
+  </div>
+
+  <div class="foot">
+    <span>ACI · ARTFULLY CRAFTED INTELLIGENCE — v0.1 · 2026-06-26</span>
+    <span>David Lee Wise · Bridge-Burners LLC · <a href="https://davidwise01.github.io/aci/">the standard ↗</a></span>
+  </div>
+</div>
+
+<script>
+(function(){
+  var M={
+    HACI:{nm:"HACI — Human Artfully Crafted Intelligence", st:"spec", stl:"SPECIFIED v0.1",
+      ds:"The first defined member: a semantic Markdown profile for deterministic role attribution in documents co-authored by humans and AI. Two prefix symbols (! human command, ? question), one case convention (the first alphabetic character sets Documentation vs AI attribution), three inherited Markdown constructs (> evidence, # headings, code fences). File: .haci · single-pass O(n) parser · reference implementation complete."},
+    MACI:{nm:"MACI — Machine Artfully Crafted Intelligence", st:"res", stl:"RESERVED",
+      ds:"The machine-to-machine layer: how AI systems exchange structured intent, proposals, and evidence with each other in a deterministic, attributable format. Anticipated: inter-agent protocols, structured proposal/approval workflows, machine-readable role attribution in API exchanges, deterministic serialisation of decision chains. Reserved, not yet specified."},
+    DACI:{nm:"DACI — Distributed Artfully Crafted Intelligence", st:"res", stl:"RESERVED",
+      ds:"The multi-participant layer: coordination across many humans and AI systems at once. Anticipated: consensus protocols for multi-agent authorship, distributed provenance chains, conflict resolution when many edit one document/decision tree, mesh-topology collaboration. Reserved, not yet specified."},
+    ACI:{nm:"ACI Core — the shared foundation", st:"spec", stl:"THE SUBSTRATE",
+      ds:"Not a user-facing product — the architectural substrate every member is built on. Defines the common principles, data models, and interface contracts that keep the family interoperable: deterministic communication, explicit attribution, intent↔evidence separation, minimal syntax, external anchoring."}
+  };
+  var det=document.getElementById('detail');
+  function show(k){ var m=M[k]; det.innerHTML='<span class="nm">'+m.nm+'</span><span class="st '+m.st+'">'+m.stl+'</span><p>'+m.ds+'</p>';
+    document.querySelectorAll('.pattern .role').forEach(function(r){ r.classList.toggle('sel', r.dataset.k===k); }); }
+  document.querySelectorAll('.pattern .role').forEach(function(r){ r.addEventListener('click',function(){ show(this.dataset.k); }); });
+  show('HACI');
+})();
+</script>
+</body>
+</html>
