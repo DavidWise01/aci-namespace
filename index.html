@@ -107,10 +107,10 @@
   │     .haci  ·  <span class="spec">SPECIFIED (v0.1)</span>
   │
   ├─ <b>MACI</b> (Machine ACI)      machine-to-machine collaboration
-  │     .maci  ·  <span class="res">RESERVED</span>
+  │     .maci  ·  <span class="spec">BUILT · v0.1 · eskimo</span>
   │
   ├─ <b>DACI</b> (Distributed ACI)  multi-agent coordination &amp; consensus
-  │     .daci  ·  <span class="res">RESERVED</span>
+  │     .daci  ·  <span class="spec">BUILT · eskimo</span>
   │
   └─ [future members]   pattern: [role letter] + ACI · extensible by accretion</pre>
   <p class="body">Five Core principles inherited by every member: (1) deterministic communication between human and machine; (2) explicit attribution of authorship and authority; (3) separation of intent from evidence; (4) minimal syntax, maximal compatibility; (5) external anchoring for trust and provenance. Members depend only on Core, never on each other; each is versioned independently. <b>The namespace grows by accretion, not revision.</b></p>
@@ -151,10 +151,10 @@
   var M={
     HACI:{nm:"HACI — Human Artfully Crafted Intelligence", st:"spec", stl:"SPECIFIED v0.1",
       ds:"The first defined member: a semantic Markdown profile for deterministic role attribution in documents co-authored by humans and AI. Two prefix symbols (! human command, ? question), one case convention (the first alphabetic character sets Documentation vs AI attribution), three inherited Markdown constructs (> evidence, # headings, code fences). File: .haci · single-pass O(n) parser · reference implementation complete."},
-    MACI:{nm:"MACI — Machine Artfully Crafted Intelligence", st:"res", stl:"RESERVED",
-      ds:"The machine-to-machine layer: how AI systems exchange structured intent, proposals, and evidence with each other in a deterministic, attributable format. Anticipated: inter-agent protocols, structured proposal/approval workflows, machine-readable role attribution in API exchanges, deterministic serialisation of decision chains. Reserved, not yet specified."},
-    DACI:{nm:"DACI — Distributed Artfully Crafted Intelligence", st:"res", stl:"RESERVED",
-      ds:"The multi-participant layer: coordination across many humans and AI systems at once. Anticipated: consensus protocols for multi-agent authorship, distributed provenance chains, conflict resolution when many edit one document/decision tree, mesh-topology collaboration. Reserved, not yet specified."},
+    MACI:{nm:"MACI — Machine Artfully Crafted Intelligence", st:"spec", stl:"BUILT · v0.1",
+      ds:"The machine-to-machine layer: how AI systems exchange structured intent, proposals, and evidence with each other in a deterministic, attributable format — inter-agent protocols, proposal/approval workflows, machine-readable role attribution, deterministic serialisation of decision chains. BUILT (charter updated): realized as a design + working proof-of-concept — the maci sphere carries a JSON message envelope (role · authority · refs), eight speech acts, an eight-rule validator V001–V008 with cycle detection, and a reference impl maci.py; it lives in the eskimo domain."},
+    DACI:{nm:"DACI — Distributed Artfully Crafted Intelligence", st:"spec", stl:"BUILT",
+      ds:"The multi-participant layer: coordination across many humans and AI systems at once — consensus for multi-agent authorship, distributed provenance chains, conflict resolution when many edit one decision tree, mesh-topology collaboration. BUILT (charter updated): realized as construction-proof + running simulation — the daci sphere replicates the substrate across N nodes with no coordinator, a grow-only CvRDT + deterministic causal linearization giving Strong Eventual Consistency by construction, seven verified properties; it lives in the eskimo domain."},
     ACI:{nm:"ACI Core — the shared foundation", st:"spec", stl:"THE SUBSTRATE",
       ds:"Not a user-facing product — the architectural substrate every member is built on. Defines the common principles, data models, and interface contracts that keep the family interoperable: deterministic communication, explicit attribution, intent↔evidence separation, minimal syntax, external anchoring."}
   };
