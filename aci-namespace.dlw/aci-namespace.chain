@@ -4,6 +4,6 @@ slug  : aci-namespace
 seal  : 541f00a064bcdf1c89f08903f3ecaf7a2ada1f475d1310af8a3586415d12b787
 prev  : 9f67a78f1fe522617409e9ba940ff4241f29deaee6171036ce1877093d26de97
 link  : 35c4c078e523a4b308706d8102b45bd6825b64e51671110da30401fc30683a66
-head  : 3447d3a0533aaf1e29a8bdc67a9774884fb3ae9dbc8a17064b7a008ca3c4ec90
+head  : 13f9ace173ef2e60af38912ba329b4afcb5a38b84a0e4495e8d30327f8c99cc2
 
 — the tether: link = sha256(index|slug|seal|prev). the chain head commits to the whole corpus.
